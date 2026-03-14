@@ -1,0 +1,5 @@
+CREATE TABLE assets (
+    ticker VARCHAR(20) PRIMARY KEY,
+    name VARCHAR(100) NOT NULL,
+    type VARCHAR(20) NOT NULL
+);

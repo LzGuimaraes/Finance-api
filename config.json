@@ -1,0 +1,22 @@
+{
+  "listeners": [
+    {
+      "address": "0.0.0.0",
+      "port": 8848,
+      "https": false
+    }
+  ],
+
+  "db_clients": [
+    {
+      "name": "default",
+      "rdbms": "postgresql",
+      "host": "127.0.0.1",
+      "port": 5432,
+      "dbname": "investments",
+      "user": "finance_user",
+      "passwd": "123456",
+      "connection_number": 10
+    }
+  ]
+}

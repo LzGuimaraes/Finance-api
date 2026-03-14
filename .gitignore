@@ -1,0 +1,58 @@
+# =========================
+# Diretórios de Build
+# =========================
+build/
+build_*/
+out/
+bin/
+
+# =========================
+# Variaveis de ambiente e arquivos de configuração local
+# =========================
+.env
+
+# =========================
+# Arquivos gerados pelo CMake
+# =========================
+CMakeCache.txt
+CMakeFiles/
+Makefile
+cmake_install.cmake
+install_manifest.txt
+compile_commands.json
+CTestTestfile.cmake
+_deps/
+
+# =========================
+# Binários e Bibliotecas C++
+# =========================
+*.o
+*.obj
+*.so
+*.dylib
+*.a
+*.dll
+*.exe
+
+# =========================
+# Logs e Arquivos Temporários
+# =========================
+*.log
+*.tmp
+*.swp
+
+# =========================
+# IDEs e Editores
+# =========================
+.vscode/
+.idea/
+*.suo
+*.user
+*.sln
+*.xcodeproj/
+
+# =========================
+# Arquivos de Sistema Operacional
+# =========================
+.DS_Store
+Thumbs.db
