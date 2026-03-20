@@ -7,35 +7,28 @@ void UserRepository::findByEmail(
     std::function<void(const std::optional<Users>&)> callback,
     std::function<void(const drogon::orm::DrogonDbException&)> errCallback) {
     
-    db_->execSqlAsync(
-        "SELECT * FROM users WHERE email = $1",
-        [callback](const Result& result) {
-            if (result.empty()) {
+    Mapper<Users> mapper(db_);
+    mapper.findBy(
+        Criteria(Users::Cols::_email, CompareOperator::EQ, email),
+        [callback](const std::vector<Users>& users) {
+            if (!users.empty()) {
+                callback(users[0]);
+            } else {
                 callback(std::nullopt);
-                return;
             }
-
-            Users user(result[0]);
-            callback(user);
         },
-        errCallback,
-        email
+        errCallback
     );
 }
 
 void UserRepository::create(
     const Users& user,
     std::function<void(const Users&)> callback,
-    std::function<void(const drogon::orm::DrogonDbException&)> errCallback)
-{
-    db_->execSqlAsync(
-        "INSERT INTO users (name, email, password_hash) VALUES ($1, $2, $3) RETURNING *",
-        [callback](const Result& result) {
-            Users created(result[0]);
-            callback(created);
-        },
-        errCallback,
-        user.getName(),
-        user.getEmail(),
-        user.getPasswordHash());
+    std::function<void(const drogon::orm::DrogonDbException&)> errCallback) {
+    Mapper<Users> mapper(db_);
+    mapper.insert(
+        user,
+        callback,
+        errCallback
+    );
 }

@@ -1,6 +1,7 @@
 #pragma once
 
 #include <drogon/orm/DbClient.h>
+#include <drogon/orm/Mapper.h>
 #include <drogon/orm/Exception.h>
 #include <drogon/drogon.h>
 
