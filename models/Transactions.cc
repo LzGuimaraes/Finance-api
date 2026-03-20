@@ -1002,11 +1002,6 @@ bool Transactions::validateJsonForCreation(const Json::Value &pJson, std::string
         if(!validJsonOfField(6, "transaction_date", pJson["transaction_date"], err, true))
             return false;
     }
-    else
-    {
-        err="The transaction_date column cannot be null";
-        return false;
-    }
     return true;
 }
 bool Transactions::validateMasqueradedJsonForCreation(const Json::Value &pJson,
@@ -1099,11 +1094,6 @@ bool Transactions::validateMasqueradedJsonForCreation(const Json::Value &pJson,
               if(!validJsonOfField(6, pMasqueradingVector[6], pJson[pMasqueradingVector[6]], err, true))
                   return false;
           }
-        else
-        {
-            err="The " + pMasqueradingVector[6] + " column cannot be null";
-            return false;
-        }
       }
     }
     catch(const Json::LogicError &e)

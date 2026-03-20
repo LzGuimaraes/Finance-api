@@ -248,10 +248,11 @@ class Transactions
             sql += "price,";
             ++parametersCount;
         }
-        if(dirtyFlag_[6])
+        sql += "transaction_date,";
+        ++parametersCount;
+        if(!dirtyFlag_[6])
         {
-            sql += "transaction_date,";
-            ++parametersCount;
+            needSelection=true;
         }
         needSelection=true;
         if(parametersCount > 0)
@@ -295,6 +296,10 @@ class Transactions
         {
             n = snprintf(placeholderStr,sizeof(placeholderStr),"$%d,",placeholder++);
             sql.append(placeholderStr, n);
+        }
+        else
+        {
+            sql +="default,";
         }
         if(parametersCount > 0)
         {
